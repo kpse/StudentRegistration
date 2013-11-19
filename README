@@ -1,4 +1,14 @@
-This is your new Play application
-=====================================
+TODOs:
 
-This file will be packaged with your application, when using `play dist`.
+1 default router: wip Done
+2 backend service accommodation Done
+3 styling
+4 cookie, personal info
+5 left panel
+6 progress indicator
+7 dynamic process
+8 manager add accommodation Done
+9 functional test  Done
+10 jasmine test     Done
+11 scala test/unit test Done
+12 ci             Done
