@@ -11,18 +11,18 @@ libraryDependencies ++= Seq(
 
 play.Project.playScalaSettings
 
-seq(jasmineSettings : _*)
-
-appJsDir <+= sourceDirectory { src => src  / ".." / "public" / "javascripts" }
-
-appJsLibDir <+= sourceDirectory { src => src  / ".." / "public" / "javascripts" / "vendor" / "angularjs" }
-
-jasmineTestDir <+= sourceDirectory { src => src / ".." / "test" / "assets" }
-
-jasmineConfFile <+= sourceDirectory { src => src / ".." / "test" / "assets" / "test.dependencies.js" }
-
-jasmineRequireJsFile <+= sourceDirectory { src => src / ".." / "public" / "javascripts" / "vendor" / "require" / "require-2.1.9.js" }
-
-jasmineRequireConfFile <+= sourceDirectory { src => src / "test" / "assets" / "js" / "require.conf.js" }
-
-(test in Test) <<= (test in Test) dependsOn (jasmine)
+//seq(jasmineSettings : _*)
+//
+//appJsDir <+= sourceDirectory { src => src  / ".." / "public" / "javascripts" }
+//
+//appJsLibDir <+= sourceDirectory { src => src  / ".." / "public" / "javascripts" / "vendor" / "angularjs" }
+//
+//jasmineTestDir <+= sourceDirectory { src => src / ".." / "test" / "assets" }
+//
+//jasmineConfFile <+= sourceDirectory { src => src / ".." / "test" / "assets" / "test.dependencies.js" }
+//
+//jasmineRequireJsFile <+= sourceDirectory { src => src / ".." / "public" / "javascripts" / "vendor" / "require" / "require-2.1.9.js" }
+//
+//jasmineRequireConfFile <+= sourceDirectory { src => src / "test" / "assets" / "config" / "require.conf.js" }
+//
+//(test in Test) <<= (test in Test) dependsOn (jasmine)
