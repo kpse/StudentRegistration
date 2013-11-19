@@ -1,0 +1,15 @@
+<div ng-controller="addAccommodationCtrl" class="add-accommodation">
+    宿舍名称: <input type="text" ng-model="name"/>
+    宿舍图片: <input type="text" ng-model="imageUrl"/>
+    <button class="btn btn-primary" ng-click="create()">添加宿舍</button>
+</div>
+<div class="row padded">
+    <div class="list-group col-xs-3">
+        <a class="list-group-item "
+           ng-repeat="item in accommodations"
+           ng-class="{active: item.selected}"
+           ng-href="{{ contextUrl }}/{{ item.name }}"
+           ng-click="selectItem(item)">{{item.desc}}</a>
+    </div>
+    <div ui-view class="col-xs-9 accommodation-img"></div>
+</div>
