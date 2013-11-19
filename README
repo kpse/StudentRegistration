@@ -1,14 +1,18 @@
 TODOs:
 
+1 styling
+2 cookie, personal info
+3 left panel
+4 progress indicator
+5 dynamic process
+
+Dones:
+
 1 default router: wip Done
 2 backend service accommodation Done
-3 styling
-4 cookie, personal info
-5 left panel
-6 progress indicator
-7 dynamic process
-8 manager add accommodation Done
-9 functional test  Done
-10 jasmine test     Done
-11 scala test/unit test Done
-12 ci             Done
+3 manager add accommodation Done
+4 functional test  Done
+5 jasmine test     Done
+6 scala test/unit test Done
+7 ci             Done
+
