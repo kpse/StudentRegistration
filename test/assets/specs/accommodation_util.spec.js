@@ -6,10 +6,4 @@ describe('AccommodationUtil', function () {
         ]});
         expect(url).toBe("url");
     });
-});/**
- * Created with IntelliJ IDEA.
- * User: twer
- * Date: 11/20/13
- * Time: 12:26 AM
- * To change this template use File | Settings | File Templates.
- */
+})
