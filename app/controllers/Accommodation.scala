@@ -1,24 +1,24 @@
 package controllers
 
 import play.api.mvc._
-import models.Accommodation
+import models.{Accommodation, Accommodations}
 import play.api.libs.json._
 import play.api.data.Form
 import play.api.data.Forms.{tuple, text, optional}
 
-object Accommodations extends Controller {
+object AccommodationController extends Controller {
 
   implicit val writes = Json.writes[Accommodation]
 
   def show(id: Long) = Action {
-    Accommodation.findById(id).map {
+    Accommodations.findById(id).map {
       acc =>
         Ok(Json.toJson(acc)).as("application/json")
     }.getOrElse(NotFound)
   }
 
   def all = Action {
-    val jsons = Accommodation.all
+    val jsons = Accommodations.all
     Ok(Json.toJson(jsons)).as("application/json")
   }
 
@@ -32,7 +32,7 @@ object Accommodations extends Controller {
 
   def create =  Action { implicit request =>
     accommodationForm.bindFromRequest.value map { acc =>
-      val created = Accommodation.create(acc)
+      val created = Accommodations.create(acc)
       Ok(Json.toJson(created)).as("application/json")
     } getOrElse BadRequest
   }

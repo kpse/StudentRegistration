@@ -7,10 +7,10 @@ import play.api.Play.current
 
 case class Accommodation(id: Long, name: String, desc: String, imageUrl: String)
 
-object Accommodation {
+object Accommodations {
 
-  def findById(id: Long) = Accommodation.all.find { _.id == id }
-  def findByName(name: String) = Accommodation.all.find { _.name == name }
+  def findById(id: Long) = all.find { _.id == id }
+  def findByName(name: String) = all.find { _.name == name }
 
   val simple = {
     get[Long]("id") ~
@@ -25,7 +25,7 @@ object Accommodation {
 
   def all(): List[Accommodation] = DB.withConnection {
     implicit c =>
-      SQL("select * from accommodation").as(Accommodation.simple *)
+      SQL("select * from accommodation").as(simple *)
   }
 
   def create(tuple:(String, String, Option[String])) = {
