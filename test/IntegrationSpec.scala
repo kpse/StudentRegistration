@@ -8,29 +8,53 @@ import play.api.test.Helpers._
  * An integration test will fire up a whole play application in a real (or headless) browser
  */
 class IntegrationSpec extends Specification {
-  
+
   "Application" should {
-    
+
     "work from within a browser" in {
-      running(TestServer(3333), HTMLUNIT) { browser =>
+      running(TestServer(3333), HTMLUNIT) {
+        browser =>
 
-        browser.goTo("http://localhost:3333/")
+          browser.goTo("http://localhost:3333/")
 
-        browser.pageSource must contain("欢迎你！")
-       
+          browser.pageSource must contain("欢迎你！")
+
       }
     }
 
     "has admin page" in {
-      running(TestServer(3333), HTMLUNIT) { browser =>
+      running(TestServer(3333), HTMLUNIT) {
+        browser =>
 
-        browser.goTo("http://localhost:3333/admin")
+          browser.goTo("http://localhost:3333/admin")
 
-        browser.pageSource must contain("智慧报道--老师管理平台")
+          browser.pageSource must contain("智慧报道--老师管理平台")
 
       }
+
+      "has college register page" in {
+        running(TestServer(3333), HTMLUNIT) {
+          browser =>
+
+            browser.goTo("http://localhost:3333/jiaotong/register")
+
+            browser.pageSource must contain("college=\"jiaotong\"")
+
+        }
+      }
+
+      "has college admin page" in {
+        running(TestServer(3333), HTMLUNIT) {
+          browser =>
+
+            browser.goTo("http://localhost:3333/jiaotong/admin")
+
+            browser.pageSource must contain("college=\"jiaotong\"")
+
+        }
+      }
+
     }
-    
   }
-  
+
 }

@@ -1,4 +1,4 @@
-import models.Accommodation
+import models.Accommodations
 import org.specs2.mutable.Specification
 import play.api.test.Helpers._
 import play.api.test.FakeApplication
@@ -10,7 +10,7 @@ class AccommodationSpec extends Specification {
       running(FakeApplication(additionalConfiguration = inMemoryDatabase())) {
 
 
-        Accommodation.all.size must beGreaterThan(0)
+        Accommodations.all.size must beGreaterThan(0)
       }
     }
 
@@ -21,9 +21,9 @@ class AccommodationSpec extends Specification {
           "http://image.url.com",
           Option("desc")
           )
-        val acc = Accommodation.create(tuple)
+        val acc = Accommodations.create(tuple)
 
-        val accommodation = Accommodation.findById(acc.get.id)
+        val accommodation = Accommodations.findById(acc.get.id)
 
         accommodation.get.imageUrl must beEqualTo("http://image.url.com")
       }
@@ -36,9 +36,9 @@ class AccommodationSpec extends Specification {
           "http://image.url.com",
           Option("desc")
           )
-        Accommodation.create(tuple)
+        Accommodations.create(tuple)
 
-        val accommodation = Accommodation.findByName("Testname")
+        val accommodation = Accommodations.findByName("Testname")
 
         accommodation.get.imageUrl must beEqualTo("http://image.url.com")
       }
