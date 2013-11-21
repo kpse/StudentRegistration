@@ -1,6 +1,6 @@
 describe('AccommodationUtil', function () {
 
-    it('should create "accommodations" model with 2 accommodations fetched via xhr ', function () {
+    it('should pick up image URL from accommodations ', function () {
         var url = AccommodationUtil.imageOf("item", {accommodations: [
             {name: "item", imageUrl: "url"}
         ]});

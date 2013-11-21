@@ -1,6 +1,6 @@
-@(title: String)
-@main(title) {
-    <div ng-app="app">
+@(collegeName: String)
+@main("app")(collegeName) {
+    <div>
         <img src="@routes.Assets.at("images/profile.jpg")" alt="pic"/>
         <h4>
             欢迎你！ 赵军章 同学

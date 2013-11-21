@@ -15,7 +15,7 @@ play.Project.playScalaSettings
 //
 //appJsDir <+= sourceDirectory { src => src  / ".." / "public" / "javascripts" }
 //
-//appJsLibDir <+= sourceDirectory { src => src  / ".." / "public" / "javascripts" / "vendor" / "angularjs" }
+//appJsLibDir <+= sourceDirectory { src => src  / ".." / "public" / "javascripts" / "vendor" }
 //
 //jasmineTestDir <+= sourceDirectory { src => src / ".." / "test" / "assets" }
 //

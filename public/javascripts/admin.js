@@ -7,7 +7,7 @@ admin.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'templates/admin_list.html',
             controller: 'AccommodationCtrl', resolve: {
                 resolvedprop: [function () {
-                    return {url: '/admin#/studentPlatform' }
+                    return {url: '#/studentPlatform' }
                 }]
             }
         })
@@ -28,7 +28,10 @@ admin.config(function ($stateProvider, $urlRouterProvider) {
 admin.controller({
     'AccommodationCtrl': AccommodationUtil.accCtrl,
     'SingleBuildingCtrl': AccommodationUtil.buildingCtrl,
-    'addAccommodationCtrl' : AccommodationUtil.addAccommodationCtrl
+    'addAccommodationCtrl': AccommodationUtil.addAccommodationCtrl
 })
 
-angular.module('admin').factory('Accommodation', accommodationService);
+angular.module('admin').factory('Accommodation', accommodationService)
+    .factory('Colleges', collegeService);
+
+admin.directive('college', collegeDirective)

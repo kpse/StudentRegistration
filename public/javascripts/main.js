@@ -11,7 +11,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'templates/list.html',
             controller: 'AccommodationCtrl', resolve: {
                 resolvedprop: [function () {
-                    return {url: '/#/accommodation' }
+                    return {url: '#/accommodation' }
                 }]
             }
         })
@@ -33,4 +33,7 @@ app.controller({
     'SingleBuildingCtrl': AccommodationUtil.buildingCtrl
 })
 
-angular.module('app').factory('Accommodation', accommodationService);
+app.factory('Accommodation', accommodationService)
+    .factory('Colleges', collegeService);
+
+app.directive('college', collegeDirective)
