@@ -3,13 +3,15 @@
 # ~~~~
 
 # Home page
-GET        /                          controllers.Application.index
-GET        /admin                     controllers.Application.admin
-GET        /accommodations/:id        controllers.Accommodations.show(id: Long)
-GET        /accommodations            controllers.Accommodations.all
+GET         /                          controllers.Application.index
+GET         /admin                     controllers.Application.admin
+GET         /accommodations/:id        controllers.Accommodations.show(id: Long)
+GET         /accommodations            controllers.Accommodations.all
 POST        /accommodations            controllers.Accommodations.create
 
-GET        /templates/*file           controllers.Static.at(path="/public/templates", file)
+GET         /templates/*file           controllers.Static.at(path="/public/templates", file)
+
+GET         /*school/register          controllers.Schools.index(school)
 
 # Map static resources from the /public folder to the /assets URL path
-GET        /assets/*file              controllers.Assets.at(path="/public", file)
+GET         /assets/*file              controllers.Assets.at(path="/public", file)
