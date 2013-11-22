@@ -1,3 +1,4 @@
+import java.util.concurrent.TimeUnit
 import org.specs2.mutable._
 
 import play.api.test._
@@ -11,47 +12,24 @@ class IntegrationSpec extends Specification {
 
   "Application" should {
 
-    "work from within a browser" in {
+    "work from within a browser" in new WithBrowser {
       running(TestServer(3333), HTMLUNIT) {
         browser =>
 
           browser.goTo("http://localhost:3333/")
 
-          browser.pageSource must contain("欢迎你！")
-
+          browser.pageSource() must contain("class=\"register-page\"");
       }
     }
 
-    "has admin page" in {
+    "have admin page" in {
       running(TestServer(3333), HTMLUNIT) {
         browser =>
 
           browser.goTo("http://localhost:3333/admin")
 
-          browser.pageSource must contain("智慧报道--老师管理平台")
+          browser.pageSource() must contain("class=\"admin-page\"");
 
-      }
-
-      "has college register page" in {
-        running(TestServer(3333), HTMLUNIT) {
-          browser =>
-
-            browser.goTo("http://localhost:3333/jiaotong/register")
-
-            browser.pageSource must contain("college=\"jiaotong\"")
-
-        }
-      }
-
-      "has college admin page" in {
-        running(TestServer(3333), HTMLUNIT) {
-          browser =>
-
-            browser.goTo("http://localhost:3333/jiaotong/admin")
-
-            browser.pageSource must contain("college=\"jiaotong\"")
-
-        }
       }
 
     }

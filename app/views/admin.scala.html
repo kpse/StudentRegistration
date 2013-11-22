@@ -1,19 +1,4 @@
-@(collegeName: String)
-@main("admin")(collegeName) {
-    <div>
-        <h4>
-            智慧报道--老师管理平台
-        </h4>
-        <div class="row">
-            <ul class="nav nav-pills">
-                <li><a href="#/statistics">统计查询</a></li>
-                <li><a href="#/system">系统管理</a></li>
-                <li><a href="#/studentPlatform">学生平台管理</a></li>
-            </ul>
-
-        </div>
-        <div ui-view></div>
-
-    </div>
+@main("admin") {
+    <div class="admin-page" ui-view></div>
     <script src="@routes.Assets.at("javascripts/admin.js")" type="text/javascript"></script>
 }

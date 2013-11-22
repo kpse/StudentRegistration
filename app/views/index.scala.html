@@ -1,27 +1,4 @@
-@(collegeName: String)
-@main("app")(collegeName) {
-    <div>
-        <img src="@routes.Assets.at("images/profile.jpg")" alt="pic"/>
-        <h4>
-            欢迎你！ 赵军章 同学
-            你被录取到 商学院 财务管理专业
-        </h4>
-        <div class="row">
-            <ul class="nav nav-pills">
-                <li><a href="#/individual">个人信息</a></li>
-                <li><a href="#/onlinePay">在线缴费</a></li>
-                <li><a href="#/accommodation">网上选宿舍</a></li>
-                <li><a href="#/trainingUniform">军训服装</a></li>
-                <li><a href="#/utilities">生活用品</a></li>
-                <li><a href="#/freeCellPhone">免费手机选送</a></li>
-                <li><a href="#/classChoosing">分班</a></li>
-                <li><a href="#/prepaidCard">饭卡办理</a></li>
-                <li><a href="#/contacts">通讯录</a></li>
-                <li><a href="#/conselling">咨询</a></li>
-            </ul>
-
-        </div>
-        <div ui-view></div>
-    </div>
+@main("app"){
+    <div class="register-page" ui-view></div>
     <script src="@routes.Assets.at("javascripts/main.js")" type="text/javascript"></script>
 }

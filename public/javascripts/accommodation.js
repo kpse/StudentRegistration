@@ -4,17 +4,9 @@ var AccommodationUtil = {
             return a.name == item
         });
         return _.isUndefined(result) ? '' : result.imageUrl
-//    return {
-//        'Milk': 'http://www.kremslehnerhotels.at/files/kremslehner-hotels/hotel-regina-kremslehner-vienna/2-rooms/superior/hotel-regina-superior-rooms-vienna.jpg',
-//        'Eggs': 'http://www.automation-drive.com/EX/05-14-08/Accommodation.jpg',
-//        'Bread': 'http://www.byron-bay.com.au/accommodation.JPG',
-//        'Cheese': 'http://www.settlersvillage.co.za/accommodation2b.jpg',
-//        'Ham': 'http://www.varianostravel.com/images/Phoenician_accommodation.jpg'
-//    }[item];
     },
 
-    accCtrl: function ($scope, Accommodation, resolvedprop) {
-        $scope.contextUrl = resolvedprop.url;
+    accCtrl: function ($scope, Accommodation) {
 
         var refresh = function(){
             var accommodationPromise = Accommodation.all();

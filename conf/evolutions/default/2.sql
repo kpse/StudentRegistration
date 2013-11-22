@@ -1,14 +1,18 @@
 # --- !Ups
 
-CREATE TABLE college (
-  id   SERIAL PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
-  title VARCHAR(255) NOT NULL
+CREATE TABLE accommodation (
+  id        SERIAL PRIMARY KEY,
+  collegeId LONG,
+  name      VARCHAR(255) NOT NULL,
+  desc      VARCHAR(255) NOT NULL,
+  imageUrl  TEXT         NOT NULL
 );
 
-INSERT INTO college (name, title) values ('jiaotong', '西安交通大学');
-INSERT INTO college (name, title) values ('xidian', '西安电子科技大学');
-INSERT INTO college (name, title) values ('qinghua', '清华池大学');
+INSERT INTO accommodation (name, desc, imageUrl, collegeId) VALUES ('a1', '宿舍1', 'http://www.kremslehnerhotels.at/files/kremslehner-hotels/hotel-regina-kremslehner-vienna/2-rooms/superior/hotel-regina-superior-rooms-vienna.jpg', 1);
+INSERT INTO accommodation (name, desc, imageUrl, collegeId) VALUES ('a2', '宿舍2', 'http://www.automation-drive.com/EX/05-14-08/Accommodation.jpg', 1);
+INSERT INTO accommodation (name, desc, imageUrl, collegeId) VALUES ('a3', '宿舍3', 'http://www.byron-bay.com.au/accommodation.JPG', 1);
+INSERT INTO accommodation (name, desc, imageUrl, collegeId) VALUES ('a4', '宿舍4', 'http://www.settlersvillage.co.za/accommodation2b.jpg', 2);
+INSERT INTO accommodation (name, desc, imageUrl, collegeId) VALUES ('a5', '宿舍5', 'http://www.varianostravel.com/images/Phoenician_accommodation.jpg', 3);
 # --- !Downs
 
-DROP TABLE IF EXISTS college;
+DROP TABLE IF EXISTS accommodation;

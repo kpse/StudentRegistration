@@ -2,36 +2,38 @@ var admin = angular.module("admin", ['ui.router']);
 
 admin.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
-        .state('studentPlatform', {
-            url: '/studentPlatform',
-            templateUrl: 'templates/admin_list.html',
-            controller: 'AccommodationCtrl', resolve: {
-                resolvedprop: [function () {
-                    return {url: '#/studentPlatform' }
-                }]
-            }
+        .state('college', {
+            url: '/college/:college',
+            templateUrl: 'templates/admin_page.html',
+            controller: 'CollegeCtrl'
         })
-        .state('studentPlatform.item', {
+        .state('college.studentPlatform', {
+            url: '/studentPlatform/accommodation',
+            templateUrl: 'templates/admin_list.html',
+            controller: 'AccommodationCtrl'
+        })
+        .state('college.studentPlatform.item', {
             url: '/:item',
             templateUrl: 'templates/accommodation.building.html',
             controller: 'SingleBuildingCtrl'
         })
-        .state('wip', {
+        .state('college.wip', {
             url: '/wip',
             template: '<div>Sorry, we are still in Building...</div>'
         })
 
-    $urlRouterProvider.otherwise('/wip')
+    $urlRouterProvider.otherwise('/college/jiaotong/wip')
 })
 
 
 admin.controller({
     'AccommodationCtrl': AccommodationUtil.accCtrl,
     'SingleBuildingCtrl': AccommodationUtil.buildingCtrl,
-    'addAccommodationCtrl': AccommodationUtil.addAccommodationCtrl
+    'addAccommodationCtrl': AccommodationUtil.addAccommodationCtrl,
+    'CollegeCtrl': CollegeUtil.collegeCtrl
 })
 
 angular.module('admin').factory('Accommodation', accommodationService)
-    .factory('Colleges', collegeService);
+    .factory('College', collegeService);
 
-admin.directive('college', collegeDirective)
+//admin.directive('college', collegeDirective)

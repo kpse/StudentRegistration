@@ -5,10 +5,10 @@ import play.api.mvc._
 object Application extends Controller {
 
   def index = Action {
-    Redirect("/jiaotong/register")
+    Ok(views.html.index())
   }
 
-  def admin() = Action {
-    Redirect("/jiaotong/admin")
+  def admin = Action {
+    Ok(views.html.admin())
   }
 }

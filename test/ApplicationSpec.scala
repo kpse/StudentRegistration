@@ -18,13 +18,13 @@ class ApplicationSpec extends Specification {
       }
     }
     
-    "redirect the index page to the default college" in {
+    "render index page" in {
       running(FakeApplication()) {
         val home = route(FakeRequest(GET, "/")).get
         
-        status(home) must equalTo(SEE_OTHER)
-        redirectLocation(home) must beSome("/jiaotong/register")
-
+        status(home) must equalTo(OK)
+        contentType(home) must beSome.which(_ == "text/html")
+        contentAsString(home) must contain ("")
       }
     }
 
