@@ -33,5 +33,5 @@ admin.controller({
     'CollegeCtrl': CollegeUtil.collegeCtrl
 })
 
-angular.module('admin').factory('Accommodation', accommodationService)
+admin.factory('Accommodation', accommodationService)
     .factory('College', collegeService);

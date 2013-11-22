@@ -37,5 +37,3 @@ app.controller({
 
 app.factory('Accommodation', accommodationService)
     .factory('College', collegeService);
-
-//app.directive('college', collegeDirective)
