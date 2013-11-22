@@ -35,5 +35,3 @@ admin.controller({
 
 angular.module('admin').factory('Accommodation', accommodationService)
     .factory('College', collegeService);
-
-//admin.directive('college', collegeDirective)

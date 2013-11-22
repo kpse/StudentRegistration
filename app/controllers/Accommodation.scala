@@ -10,15 +10,15 @@ object AccommodationController extends Controller {
 
   implicit val writes = Json.writes[Accommodation]
 
-  def show(id: Long) = Action {
-    Accommodations.findById(id).map {
+  def show(college: String, id: Long) = Action {
+    Accommodations.findById(college)(id).map {
       acc =>
         Ok(Json.toJson(acc)).as("application/json")
     }.getOrElse(NotFound)
   }
 
-  def index = Action {
-    val jsons = Accommodations.all
+  def index(college: String) = Action {
+    val jsons = Accommodations.all(college)
     Ok(Json.toJson(jsons)).as("application/json")
   }
 
@@ -30,9 +30,9 @@ object AccommodationController extends Controller {
     )
   )
 
-  def create =  Action { implicit request =>
+  def create(college: String) =  Action { implicit request =>
     accommodationForm.bindFromRequest.value map { acc =>
-      val created = Accommodations.create(acc)
+      val created = Accommodations.create(acc, college)
       Ok(Json.toJson(created)).as("application/json")
     } getOrElse BadRequest
   }

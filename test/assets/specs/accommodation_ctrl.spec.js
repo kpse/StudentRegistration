@@ -8,16 +8,20 @@ describe('app', function () {
         var scope, ctrl, $httpBackend;
 
         beforeEach(
-            inject(function (_$httpBackend_, $rootScope, $controller) {
+            inject(function ($q, _$httpBackend_, $rootScope, $controller) {
                 $httpBackend = _$httpBackend_;
-                $httpBackend.expectGET('/accommodations').
+                $httpBackend.expectGET('/college/some/accommodation').
                     respond([
-                        {id: 1, name: 'a1', desc: "a1", imageUrl: "url1" },
-                        {id: 2, name: 'a2', desc: "a2", imageUrl: "url2" }
+                        {id: 1, name: 'a1', desc: "a1", imageUrl: "url1", collegeId: 1 },
+                        {id: 2, name: 'a2', desc: "a2", imageUrl: "url2", collegeId: 1 }
                     ]);
 
                 scope = $rootScope.$new();
-                _.extend(scope, {accommodations: []})
+                var deferred = $q.defer();
+                var promise = deferred.promise;
+                deferred.resolve({name: 'some'})
+                _.extend(scope, {accommodations: [],
+                    collegePromise: promise});
                 ctrl = $controller('AccommodationCtrl', {$scope: scope,
                     resolvedprop: {url: 'context'}});
             })

@@ -1,10 +1,11 @@
 var CollegeUtil = {
     collegeCtrl: function ($scope, $stateParams, College) {
+        $scope.collegePromise = College.get($stateParams.college);
 
-        var promise = College.get($stateParams.college);
-        promise.then(function (c) {
+        $scope.collegePromise.then(function (c) {
             $scope.college = c;
         });
+
 
     }
 }
