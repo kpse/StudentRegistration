@@ -17,7 +17,7 @@ object AccommodationController extends Controller {
     }.getOrElse(NotFound)
   }
 
-  def all = Action {
+  def index = Action {
     val jsons = Accommodations.all
     Ok(Json.toJson(jsons)).as("application/json")
   }

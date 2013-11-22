@@ -6,8 +6,6 @@
 GET         /                                controllers.Application.index
 GET         /admin                           controllers.Application.admin
 
-GET         /colleges/*collegeName           controllers.CollegeController.show(collegeName: String)
-
 GET         /*college/register               controllers.Register.index(college)
 GET         /*college/admin                  controllers.Register.admin(college)
 
@@ -19,9 +17,9 @@ GET         /*college/templates/*file        controllers.Static.ignoreCollege(pa
 
 #Services
 GET         /accommodations/:id              controllers.AccommodationController.show(id: Long)
-GET         /accommodations                  controllers.AccommodationController.all
+GET         /accommodations                  controllers.AccommodationController.index
 POST        /accommodations                  controllers.AccommodationController.create
-
+GET         /colleges/:name                  controllers.CollegeController.show(name: String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                    controllers.Assets.at(path="/public", file)
