@@ -3,12 +3,16 @@ var accommodationService = function ($http) {
         angular.extend(this, data);
     }
 
-    function collegeUrl(name){
-      return '/college/'+ name +'/accommodation/';
+    function collegeUrl(name) {
+        return '/college/' + name + '/accommodation';
+    }
+
+    function collegeUrlWithId(name, id) {
+        return collegeUrl(name) + '/' + id;
     }
 
     Accommodation.get = function (id, collegeName) {
-        return $http.get(collegeUrl(collegeName) + id).then(function (response) {
+        return $http.get(collegeUrlWithId(collegeName, id)).then(function (response) {
             return new Accommodation(response.data);
         });
     };

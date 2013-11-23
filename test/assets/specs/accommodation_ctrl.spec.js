@@ -10,7 +10,7 @@ describe('app', function () {
         beforeEach(
             inject(function ($q, _$httpBackend_, $rootScope, $controller) {
                 $httpBackend = _$httpBackend_;
-                $httpBackend.expectGET('/college/some/accommodation/').
+                $httpBackend.expectGET('/college/some/accommodation').
                     respond([
                         {id: 1, name: 'a1', desc: "a1", imageUrl: "url1", collegeId: 1 },
                         {id: 2, name: 'a2', desc: "a2", imageUrl: "url2", collegeId: 1 }
