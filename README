@@ -1,4 +1,4 @@
-Please run ./build.sh before committing.
+Please run './build.sh p' for committing.
 
 TODOs:
 
