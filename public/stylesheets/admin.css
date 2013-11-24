@@ -1,5 +1,7 @@
 .thumbnail {
-  height: 280px !important;
+  text-align: center;
+  min-height: 50px;
+  border: 1px solid green;
 }
 
 .btn-droppable {

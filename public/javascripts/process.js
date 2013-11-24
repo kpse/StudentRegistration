@@ -1,6 +1,6 @@
 var ProcessUtil = {
     processChangeCtrl: function ($scope) {
-        $scope.list5 = [
+        $scope.usingList = [
             { 'title': 'Item 1', 'drag': true },
             { 'title': 'Item 2', 'drag': true },
             { 'title': 'Item 3', 'drag': true },
@@ -10,7 +10,8 @@ var ProcessUtil = {
             { 'title': 'Item 7', 'drag': true },
             { 'title': 'Item 8', 'drag': true }
         ];
-
-        $scope.list1 = [];
+        $scope.deleteList = [
+            { 'title': 'Item 9', 'drag': true }
+        ];
     }
 }
