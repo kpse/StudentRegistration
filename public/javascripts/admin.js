@@ -29,7 +29,10 @@ admin.config(function ($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise(
         function ($injector, $location) {
-            $location.path($location.path().replace(/(college\/[^/]+)\/.+$/g, '$1/wip'));
+            var path = $location.path();
+            path.indexOf("college") < 0 ?
+                $location.path('/college/jiaotong') :
+                $location.path(path.replace(/(college\/[^/]+)\/.+$/g, '$1/wip'));
         });
 })
 
