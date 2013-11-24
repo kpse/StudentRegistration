@@ -1,3 +1,5 @@
+import net.litola.SassPlugin
+
 name := "StudentRegistration"
 
 version := "1.0-SNAPSHOT"
@@ -11,18 +13,5 @@ libraryDependencies ++= Seq(
 
 play.Project.playScalaSettings
 
-//seq(jasmineSettings : _*)
-//
-//appJsDir <+= sourceDirectory { src => src  / ".." / "public" / "javascripts" }
-//
-//appJsLibDir <+= sourceDirectory { src => src  / ".." / "public" / "javascripts" / "vendor" }
-//
-//jasmineTestDir <+= sourceDirectory { src => src / ".." / "test" / "assets" }
-//
-//jasmineConfFile <+= sourceDirectory { src => src / ".." / "test" / "assets" / "test.dependencies.js" }
-//
-//jasmineRequireJsFile <+= sourceDirectory { src => src / ".." / "public" / "javascripts" / "vendor" / "require" / "require-2.1.9.js" }
-//
-//jasmineRequireConfFile <+= sourceDirectory { src => src / "test" / "assets" / "config" / "require.conf.js" }
-//
-//(test in Test) <<= (test in Test) dependsOn (jasmine)
+
+play.Project.playScalaSettings ++ SassPlugin.sassSettings

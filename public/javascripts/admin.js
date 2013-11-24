@@ -1,4 +1,4 @@
-var admin = angular.module("admin", ['ui.router']);
+var admin = angular.module("admin", ['ui.router', 'ngDragDrop']);
 
 admin.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
@@ -17,6 +17,11 @@ admin.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'templates/accommodation.building.html',
             controller: 'SingleBuildingCtrl'
         })
+        .state('college.process', {
+            url: '/studentPlatform/process',
+            templateUrl: 'templates/process.html',
+            controller: 'ProcessChangeCtrl'
+        })
         .state('college.wip', {
             url: '/wip',
             template: '<div>Sorry, we are still in Building...</div>'
@@ -29,8 +34,9 @@ admin.config(function ($stateProvider, $urlRouterProvider) {
 admin.controller({
     'AccommodationCtrl': AccommodationUtil.accCtrl,
     'SingleBuildingCtrl': AccommodationUtil.buildingCtrl,
-    'addAccommodationCtrl': AccommodationUtil.addAccommodationCtrl,
-    'CollegeCtrl': CollegeUtil.collegeCtrl
+    'AddAccommodationCtrl': AccommodationUtil.AddAccommodationCtrl,
+    'CollegeCtrl': CollegeUtil.collegeCtrl,
+    'ProcessChangeCtrl': ProcessUtil.processChangeCtrl
 })
 
 admin.factory('Accommodation', accommodationService)

@@ -45,7 +45,7 @@ var AccommodationUtil = {
             });
         });
     },
-    addAccommodationCtrl: function ($scope, $stateParams, $rootScope, Accommodation) {
+    AddAccommodationCtrl: function ($scope, $stateParams, $rootScope, Accommodation) {
         $scope.collegePromise.then(function (c) {
             $scope.college = c
 

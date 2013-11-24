@@ -14,12 +14,15 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
+            'public/javascripts/vendor/jquery-2.0.3.min.js',
+            'public/javascripts/vendor/jquery-ui.min.js',
             'public/javascripts/vendor/angularjs/angular.js',
             'public/javascripts/vendor/angularjs/angular-ui-router.js',
             'public/javascripts/vendor/**/*.js',
             'public/javascripts/services/*.js',
             'public/javascripts/accommodation.js',
             'public/javascripts/college.js',
+            'public/javascripts/process.js',
             'public/javascripts/*.js',
             'test/assets/config/angular-mocks.js',
             'test/assets/**/*.spec.js'
