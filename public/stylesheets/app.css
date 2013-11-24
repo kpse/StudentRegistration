@@ -1,8 +1,14 @@
 .accommodation-img {
-    width: 500px;
-    height: 500px;
+  width: 500px;
+  height: 500px;
 }
 
 .portrait {
-    width: 50px;
+  width: 50px;
 }
+
+.module-view,
+.modules-list-container {
+  margin: 30px;
+}
+

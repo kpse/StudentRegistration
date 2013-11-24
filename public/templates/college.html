@@ -1,23 +1,20 @@
 <div>
-    <img src="http://pic.66wz.com/0/01/50/99/1509922_951089.jpg" alt="pic" class="portrait"/>
-    <h4 class="student-welcome-title">
-        欢迎你！ 赵军章 同学
-        你被录取到 {{college.title}} 财务管理专业
-    </h4>
-    <div class="row">
-        <ul class="nav nav-pills">
-            <li><a href="#/college/{{college.name}}/individual">个人信息</a></li>
-            <li><a href="#/college/{{college.name}}/onlinePay">在线缴费</a></li>
-            <li><a href="#/college/{{college.name}}/accommodation">网上选宿舍</a></li>
-            <li><a href="#/college/{{college.name}}/trainingUniform">军训服装</a></li>
-            <li><a href="#/college/{{college.name}}/utilities">生活用品</a></li>
-            <li><a href="#/college/{{college.name}}/freeCellPhone">免费手机选送</a></li>
-            <li><a href="#/college/{{college.name}}/classChoosing">分班</a></li>
-            <li><a href="#/college/{{college.name}}/prepaidCard">饭卡办理</a></li>
-            <li><a href="#/college/{{college.name}}/contacts">通讯录</a></li>
-            <li><a href="#/college/{{college.name}}/conselling">咨询</a></li>
-        </ul>
+  <img src="http://pic.66wz.com/0/01/50/99/1509922_951089.jpg" alt="pic" class="portrait"/>
+  <h4 class="student-welcome-title">
+    欢迎你！ 赵军章 同学
+    你被录取到 {{college.title}} 财务管理专业
+  </h4>
 
-    </div>
-    <div ui-view></div>
+  <div class="row modules-list-container">
+    <ul class="nav nav-pills modules-list">
+      <li ng-repeat="module in modules">
+        <a ng-href="#/college/{{college.name}}/{{ module.url }}" class="btn btn-success">
+          {{module.desc}}
+        </a>
+      </li>
+
+    </ul>
+
+  </div>
+  <div class="module-view" ui-view></div>
 </div>
