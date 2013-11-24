@@ -21,8 +21,15 @@ function deploy {
     git push heroku master
 }
 
+function all {
+    build_local && \
+    git push origin master && \
+    git push heroku master
+}
+
 function main {
   	case $1 in
+		a) all ;;
 		d) deploy ;;
 		p) build_and_push ;;
 		b) build_local ;;
