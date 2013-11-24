@@ -2,13 +2,14 @@
     <h4 class="admin-welcome-title">
         智慧报道--老师管理平台 ({{ college.title }})
     </h4>
-    <div class="row">
-        <ul class="nav nav-pills">
-            <li><a href="#/college/{{college.name}}/statistics">统计查询</a></li>
-            <li><a href="#/college/{{college.name}}/system">系统管理</a></li>
-            <li><a href="#/college/{{college.name}}/studentPlatform">学生平台管理</a></li>
+    <div class="row modules-list-container">
+        <ul class="nav nav-pills actions">
+            <li class="action"><a class="btn btn-success" href="#/college/{{college.name}}/statistics">统计查询</a></li>
+            <li class="action"><a class="btn btn-success" href="#/college/{{college.name}}/system">系统管理</a></li>
+            <li class="action"><a class="btn btn-success" href="#/college/{{college.name}}/studentPlatform">学生平台管理</a></li>
         </ul>
     </div>
-    <div ui-view></div>
+
+    <div class="module-view" ui-view></div>
 
 </div>

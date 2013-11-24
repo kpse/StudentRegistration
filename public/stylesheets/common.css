@@ -1,1 +1,9 @@
+.module-view,
+.modules-list-container {
+  margin: 30px;
+}
+
+.actions .action {
+  padding: 15px;
+}
 
