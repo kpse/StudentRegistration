@@ -20,9 +20,12 @@ object Colleges {
 
   def all: List[College] = DB.withConnection {
     implicit c =>
-      SQL("select * from college").as(simple *)
+      SQL("select * from college")
+        .as(simple *)
   }
 
-  def findByName(name: String) = all.find { _.name == name }
+  def findByName(college: String) = all.find {
+    _.name == college
+  }
 
 }

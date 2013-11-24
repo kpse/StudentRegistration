@@ -5,24 +5,24 @@
         <ul class="thumbnails">
           <li class="span3">
             当前流程：
-            <div class="thumbnail in-using-process" data-drop="true" ng-model='usingList' data-jqyoui-options="usingList"
-                 jqyoui-droppable="{multiple:true}">
+            <div class="thumbnail in-using-process" data-drop="true" ng-model='modules' data-jqyoui-options="modules"
+                 jqyoui-droppable="{multiple:true,onDrop:'enableModule'}">
               <div class="caption">
-                <div class="btn btn-info btn-draggable" ng-repeat="item in usingList" ng-show="item.title"
-                     data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="usingList"
-                     jqyoui-draggable="{index: {{$index}},animate:true}">{{item.title}}
+                <div class="btn btn-info btn-draggable" ng-repeat="item in modules | filter:enabled " ng-show="item.desc"
+                     data-drag="true" data-jqyoui-options="{revert: 'invalid'}" ng-model="modules"
+                     jqyoui-draggable="{index: {{$index}},animate:true,onStart:'startDrag(item, $index)'}" ng-click="goModuleConfig(item.url)">{{item.desc}}
                 </div>
               </div>
             </div>
           </li>
           <li class="span3">
             待添加：
-            <div class="thumbnail not-in-using-process" data-drop="true" ng-model='deleteList' data-jqyoui-options="deleteList"
-                 jqyoui-droppable="{multiple:true}">
+            <div class="thumbnail not-in-using-process" data-drop="true" ng-model='modules' data-jqyoui-options="modules"
+                 jqyoui-droppable="{multiple:true,onDrop:'disableModule'}">
               <div class="caption">
-                <div class="btn btn-info btn-draggable" ng-repeat="item in deleteList" ng-show="item.title"
-                     data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="deleteList"
-                     jqyoui-draggable="{index: {{$index}},animate:true}">{{item.title}}
+                <div class="btn btn-info btn-draggable" ng-repeat="item in modules | filter:disabled " ng-show="item.desc"
+                     data-drag="true" data-jqyoui-options="{revert: 'invalid'}" ng-model="modules"
+                     jqyoui-draggable="{index: {{$index}},animate:true,onStart:'startDrag(item, $index)'}" ng-click="goModuleConfig(item.url)">{{item.desc}}
                 </div>
               </div>
             </div>

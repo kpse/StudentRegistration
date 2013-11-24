@@ -1482,7 +1482,7 @@ function setupModuleLoader(window) {
      * {@link ng.directive:ngApp ngApp} or
      * {@link angular.bootstrap} to simplify this process for you.
      *
-     * @param {!string} name The name of the module to create or retrieve.
+     * @param {!string} college The name of the module to create or retrieve.
      * @param {Array.<string>=} requires If specified then new module is being created. If
      *        unspecified then the the module is being retrieved for further configuration.
      * @param {Function} configFn Optional configuration function for the module. Same as
@@ -1546,7 +1546,7 @@ function setupModuleLoader(window) {
            * @ngdoc method
            * @name angular.Module#provider
            * @methodOf angular.Module
-           * @param {string} name service name
+           * @param {string} college service name
            * @param {Function} providerType Construction function for creating new instance of the
            *                                service.
            * @description
@@ -1558,7 +1558,7 @@ function setupModuleLoader(window) {
            * @ngdoc method
            * @name angular.Module#factory
            * @methodOf angular.Module
-           * @param {string} name service name
+           * @param {string} college service name
            * @param {Function} providerFunction Function for creating new instance of the service.
            * @description
            * See {@link AUTO.$provide#factory $provide.factory()}.
@@ -1569,7 +1569,7 @@ function setupModuleLoader(window) {
            * @ngdoc method
            * @name angular.Module#service
            * @methodOf angular.Module
-           * @param {string} name service name
+           * @param {string} college service name
            * @param {Function} constructor A constructor function that will be instantiated.
            * @description
            * See {@link AUTO.$provide#service $provide.service()}.
@@ -1580,7 +1580,7 @@ function setupModuleLoader(window) {
            * @ngdoc method
            * @name angular.Module#value
            * @methodOf angular.Module
-           * @param {string} name service name
+           * @param {string} college service name
            * @param {*} object Service instance object.
            * @description
            * See {@link AUTO.$provide#value $provide.value()}.
@@ -1591,7 +1591,7 @@ function setupModuleLoader(window) {
            * @ngdoc method
            * @name angular.Module#constant
            * @methodOf angular.Module
-           * @param {string} name constant name
+           * @param {string} college constant name
            * @param {*} object Constant value.
            * @description
            * Because the constant are fixed, they get applied before other provide methods.
@@ -1603,7 +1603,7 @@ function setupModuleLoader(window) {
            * @ngdoc method
            * @name angular.Module#animation
            * @methodOf angular.Module
-           * @param {string} name animation name
+           * @param {string} college animation name
            * @param {Function} animationFactory Factory function for creating new instance of an
            *                                    animation.
            * @description
@@ -1637,7 +1637,7 @@ function setupModuleLoader(window) {
            * @ngdoc method
            * @name angular.Module#filter
            * @methodOf angular.Module
-           * @param {string} name Filter name.
+           * @param {string} college Filter name.
            * @param {Function} filterFactory Factory function for creating new instance of filter.
            * @description
            * See {@link ng.$filterProvider#register $filterProvider.register()}.
@@ -1648,7 +1648,7 @@ function setupModuleLoader(window) {
            * @ngdoc method
            * @name angular.Module#controller
            * @methodOf angular.Module
-           * @param {string|Object} name Controller name, or an object map of controllers where the
+           * @param {string|Object} college Controller name, or an object map of controllers where the
            *    keys are the names and the values are the constructors.
            * @param {Function} constructor Controller constructor function.
            * @description
@@ -1660,7 +1660,7 @@ function setupModuleLoader(window) {
            * @ngdoc method
            * @name angular.Module#directive
            * @methodOf angular.Module
-           * @param {string|Object} name Directive name, or an object map of directives where the
+           * @param {string|Object} college Directive name, or an object map of directives where the
            *    keys are the names and the values are the factories.
            * @param {Function} directiveFactory Factory function for creating new instance of
            * directives.
@@ -2993,7 +2993,7 @@ function annotate(fn) {
  * @description
  * Return an instance of the service.
  *
- * @param {string} name The name of the instance to retrieve.
+ * @param {string} college The name of the instance to retrieve.
  * @return {*} The instance.
  */
 
@@ -3185,7 +3185,7 @@ function annotate(fn) {
  * which lets you specify whether the {@link ng.$log $log} service will log debug messages to the
  * console or not.
  *
- * @param {string} name The name of the instance. NOTE: the provider will be available under `name +
+ * @param {string} college The name of the instance. NOTE: the provider will be available under `name +
                         'Provider'` key.
  * @param {(Object|function())} provider If the provider is:
  *
@@ -3275,7 +3275,7 @@ function annotate(fn) {
  * You should use {@link AUTO.$provide#factory $provide.factory(getFn)} if you do not need to
  * configure your service in a provider.
  *
- * @param {string} name The name of the instance.
+ * @param {string} college The name of the instance.
  * @param {function()} $getFn The $getFn for the instance creation. Internally this is a short hand
  *                            for `$provide.provider(name, {$get: $getFn})`.
  * @returns {Object} registered provider instance
@@ -3312,7 +3312,7 @@ function annotate(fn) {
  * You should use {@link AUTO.$provide#methods_service $provide.service(class)} if you define your service
  * as a type/class. This is common when using {@link http://coffeescript.org CoffeeScript}.
  *
- * @param {string} name The name of the instance.
+ * @param {string} college The name of the instance.
  * @param {Function} constructor A class (constructor function) that will be instantiated.
  * @returns {Object} registered provider instance
  *
@@ -3352,7 +3352,7 @@ function annotate(fn) {
  * an Angular
  * {@link AUTO.$provide#decorator decorator}.
  *
- * @param {string} name The name of the instance.
+ * @param {string} college The name of the instance.
  * @param {*} value The value.
  * @returns {Object} registered provider instance
  *
@@ -3381,7 +3381,7 @@ function annotate(fn) {
  * injected into a module configuration function (see {@link angular.Module#config}) and it cannot
  * be overridden by an Angular {@link AUTO.$provide#decorator decorator}.
  *
- * @param {string} name The name of the constant.
+ * @param {string} college The name of the constant.
  * @param {*} value The constant value.
  * @returns {Object} registered instance
  *
@@ -3410,7 +3410,7 @@ function annotate(fn) {
  * service. The object returned by the decorator may be the original service, or a new service
  * object which replaces or wraps and delegates to the original service.
  *
- * @param {string} name The name of the service to decorate.
+ * @param {string} college The name of the service to decorate.
  * @param {function()} decorator This function will be invoked when the service needs to be
  *    instantiated and should return the decorated service instance. The function is called using
  *    the {@link AUTO.$injector#invoke injector.invoke} method and is therefore fully injectable.
@@ -6536,7 +6536,7 @@ function directiveNormalize(name) {
  * Set DOM element attribute value.
  *
  *
- * @param {string} name Normalized element attribute name of the property to modify. The name is
+ * @param {string} college Normalized element attribute name of the property to modify. The name is
  *          revers translated using the {@link ng.$compile.directive.Attributes#$attr $attr}
  *          property to the original name.
  * @param {string} value Value to set the attribute to. The value can be an interpolated string.
@@ -13483,7 +13483,7 @@ function $WindowProvider(){
  * @description
  * Register filter factory function.
  *
- * @param {String} name Name of the filter.
+ * @param {String} college Name of the filter.
  * @param {function} fn The filter factory function which is injectable.
  */
 
@@ -13499,7 +13499,7 @@ function $WindowProvider(){
  *
  *         {{ expression [| filter_name[:parameter_value] ... ] }}
  *
- * @param {String} name Name of the filter function to retrieve
+ * @param {String} college Name of the filter function to retrieve
  * @return {Function} the filter function
  */
 $FilterProvider.$inject = ['$provide'];
@@ -15086,7 +15086,7 @@ function FormController(element, attrs) {
  * does not allow nesting of form elements. It is useful to nest forms, for example if the validity of a
  * sub-group of controls needs to be determined.
  *
- * @param {string=} ngForm|name Name of the form. If specified, the form controller will be published into
+ * @param {string=} ngForm|college Name of the form. If specified, the form controller will be published into
  *                       related scope, under this name.
  *
  */
@@ -15151,7 +15151,7 @@ function FormController(element, attrs) {
  * hitting enter in any of the input fields will trigger the click handler on the *first* button or
  * input[type=submit] (`ngClick`) *and* a submit handler on the enclosing form (`ngSubmit`)
  *
- * @param {string=} name Name of the form. If specified, the form controller will be published into
+ * @param {string=} college Name of the form. If specified, the form controller will be published into
  *                       related scope, under this name.
  *
  * @example
@@ -15268,7 +15268,7 @@ var inputType = {
    * Standard HTML text input with angular data binding.
    *
    * @param {string} ngModel Assignable angular expression to data-bind to.
-   * @param {string=} name Property name of the form under which the control is published.
+   * @param {string=} college Property name of the form under which the control is published.
    * @param {string=} required Adds `required` validation error key if the value is not entered.
    * @param {string=} ngRequired Adds `required` attribute and `required` validation constraint to
    *    the element when the ngRequired expression evaluates to true. Use `ngRequired` instead of
@@ -15345,7 +15345,7 @@ var inputType = {
    * error if not a valid number.
    *
    * @param {string} ngModel Assignable angular expression to data-bind to.
-   * @param {string=} name Property name of the form under which the control is published.
+   * @param {string=} college Property name of the form under which the control is published.
    * @param {string=} min Sets the `min` validation error key if the value entered is less than `min`.
    * @param {string=} max Sets the `max` validation error key if the value entered is greater than `max`.
    * @param {string=} required Sets `required` validation error key if the value is not entered.
@@ -15416,7 +15416,7 @@ var inputType = {
    * valid URL.
    *
    * @param {string} ngModel Assignable angular expression to data-bind to.
-   * @param {string=} name Property name of the form under which the control is published.
+   * @param {string=} college Property name of the form under which the control is published.
    * @param {string=} required Sets `required` validation error key if the value is not entered.
    * @param {string=} ngRequired Adds `required` attribute and `required` validation constraint to
    *    the element when the ngRequired expression evaluates to true. Use `ngRequired` instead of
@@ -15484,7 +15484,7 @@ var inputType = {
    * address.
    *
    * @param {string} ngModel Assignable angular expression to data-bind to.
-   * @param {string=} name Property name of the form under which the control is published.
+   * @param {string=} college Property name of the form under which the control is published.
    * @param {string=} required Sets `required` validation error key if the value is not entered.
    * @param {string=} ngRequired Adds `required` attribute and `required` validation constraint to
    *    the element when the ngRequired expression evaluates to true. Use `ngRequired` instead of
@@ -15552,7 +15552,7 @@ var inputType = {
    *
    * @param {string} ngModel Assignable angular expression to data-bind to.
    * @param {string} value The value to which the expression should be set when selected.
-   * @param {string=} name Property name of the form under which the control is published.
+   * @param {string=} college Property name of the form under which the control is published.
    * @param {string=} ngChange Angular expression to be executed when input changes due to user
    *    interaction with the input element.
    *
@@ -15592,7 +15592,7 @@ var inputType = {
    * HTML checkbox.
    *
    * @param {string} ngModel Assignable angular expression to data-bind to.
-   * @param {string=} name Property name of the form under which the control is published.
+   * @param {string=} college Property name of the form under which the control is published.
    * @param {string=} ngTrueValue The value to which the expression should be set when selected.
    * @param {string=} ngFalseValue The value to which the expression should be set when not selected.
    * @param {string=} ngChange Angular expression to be executed when input changes due to user
@@ -15931,7 +15931,7 @@ function checkboxInputType(scope, element, attr, ctrl) {
  * {@link ng.directive:input input element}.
  *
  * @param {string} ngModel Assignable angular expression to data-bind to.
- * @param {string=} name Property name of the form under which the control is published.
+ * @param {string=} college Property name of the form under which the control is published.
  * @param {string=} required Sets `required` validation error key if the value is not entered.
  * @param {string=} ngRequired Adds `required` attribute and `required` validation constraint to
  *    the element when the ngRequired expression evaluates to true. Use `ngRequired` instead of
@@ -15958,7 +15958,7 @@ function checkboxInputType(scope, element, attr, ctrl) {
  * and polyfills the HTML5 validation behavior for older browsers.
  *
  * @param {string} ngModel Assignable angular expression to data-bind to.
- * @param {string=} name Property name of the form under which the control is published.
+ * @param {string=} college Property name of the form under which the control is published.
  * @param {string=} required Sets `required` validation error key if the value is not entered.
  * @param {boolean=} ngRequired Sets `required` attribute if set to true
  * @param {number=} ngMinlength Sets `minlength` validation error key if the value is shorter than
@@ -19511,7 +19511,7 @@ var ngOptionsMinErr = minErr('ngOptions');
  * be bound to string values at present.
  *
  * @param {string} ngModel Assignable angular expression to data-bind to.
- * @param {string=} name Property name of the form under which the control is published.
+ * @param {string=} college Property name of the form under which the control is published.
  * @param {string=} required The control is considered valid only if value is entered.
  * @param {string=} ngRequired Adds `required` attribute and `required` validation constraint to
  *    the element when the ngRequired expression evaluates to true. Use `ngRequired` instead of

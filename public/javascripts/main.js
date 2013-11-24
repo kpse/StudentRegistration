@@ -26,7 +26,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             template: '<div>Sorry, we are still in Building...</div>'
         })
 
-    $urlRouterProvider.otherwise('/college/jiaotong/wip')
+    $urlRouterProvider.otherwise(
+        function ($injector, $location) {
+            $location.path($location.path().replace(/(college\/[^/]+)\/.+$/g, '$1/wip'));
+        });
 })
 
 app.controller({

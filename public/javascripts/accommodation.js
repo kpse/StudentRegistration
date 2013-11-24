@@ -19,7 +19,6 @@ var AccommodationUtil = {
 
             refresh();
 
-
             $scope.$on('refresh_accommodation', function () {
                 refresh();
             });

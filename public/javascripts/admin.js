@@ -8,26 +8,29 @@ admin.config(function ($stateProvider, $urlRouterProvider) {
             controller: 'CollegeCtrl'
         })
         .state('college.studentPlatform', {
+            url: '/studentPlatform',
+            templateUrl: 'templates/process.html',
+            controller: 'ProcessChangeCtrl'
+        })
+        .state('college.accommodation', {
             url: '/studentPlatform/accommodation',
             templateUrl: 'templates/admin_list.html',
             controller: 'AccommodationCtrl'
         })
-        .state('college.studentPlatform.item', {
+        .state('college.accommodation.item', {
             url: '/:item',
             templateUrl: 'templates/accommodation.building.html',
             controller: 'SingleBuildingCtrl'
-        })
-        .state('college.process', {
-            url: '/studentPlatform/process',
-            templateUrl: 'templates/process.html',
-            controller: 'ProcessChangeCtrl'
         })
         .state('college.wip', {
             url: '/wip',
             template: '<div>Sorry, we are still in Building...</div>'
         })
 
-    $urlRouterProvider.otherwise('/college/jiaotong/wip')
+    $urlRouterProvider.otherwise(
+        function ($injector, $location) {
+            $location.path($location.path().replace(/(college\/[^/]+)\/.+$/g, '$1/wip'));
+        });
 })
 
 
@@ -40,4 +43,5 @@ admin.controller({
 })
 
 admin.factory('Accommodation', accommodationService)
-    .factory('College', collegeService);
+    .factory('College', collegeService)
+    .factory('Module', moduleService);
