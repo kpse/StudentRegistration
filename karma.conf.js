@@ -20,9 +20,7 @@ module.exports = function (config) {
             'public/javascripts/vendor/angularjs/angular-ui-router.js',
             'public/javascripts/vendor/**/*.js',
             'public/javascripts/services/*.js',
-            'public/javascripts/accommodation.js',
-            'public/javascripts/college.js',
-            'public/javascripts/process.js',
+            'public/javascripts/controllers/*.js',
             'public/javascripts/*.js',
             'test/assets/config/angular-mocks.js',
             'test/assets/**/*.spec.js'

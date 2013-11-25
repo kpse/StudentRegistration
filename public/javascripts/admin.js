@@ -47,5 +47,4 @@ admin.controller({
 
 admin.factory('Accommodation', accommodationService)
     .factory('College', collegeService)
-    .factory('Module', moduleService)
-    .factory('Modules', modulesService);
+    .factory('Module', moduleService);

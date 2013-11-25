@@ -7,7 +7,7 @@
 
   <div class="row modules-list-container">
     <ul class="nav nav-pills modules-list actions">
-      <li class="action" ng-repeat="module in modules | filter:enabled">
+      <li class="action" ng-repeat="module in modules">
         <a ng-href="#/college/{{college.name}}/{{ module.url }}" class="btn btn-success">
           {{module.desc}}
         </a>

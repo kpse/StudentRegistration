@@ -1,9 +1,8 @@
 var ProcessUtil = {
-    processChangeCtrl: function ($scope, Module, Modules, $location, $resource) {
-        $scope.collegePromise.then(function (c) {
-            $scope.college = c;
-            $scope.modules = Modules($scope.college.name).query();
-            $scope.module = Module($scope.college.name);
+    processChangeCtrl: function ($scope, Module, College, $stateParams, $location, $resource) {
+        $scope.college = College().get({name: $stateParams.college}, function () {
+            $scope.modules = Module($scope.college.name).query(function () {
+            });
         });
 
         $scope.enabled = function (module) {
@@ -27,15 +26,14 @@ var ProcessUtil = {
         }
 
         $scope.goModuleConfig = function (module) {
-            if($scope.movingItem === module) return;
+            if ($scope.movingItem === module) return;
             var url = module.url;
             $location.path('/college/' + $scope.college.name + '/studentPlatform/' + url);
         }
 
         $scope.update = function (modules) {
             _.every(modules, function (m) {
-                var module = $scope.module(m);
-                return module.enable({id: m.id, enable: m.enable});
+                return Module($scope.college.name).enable({id: m.id, enable: m.enable});
             });
         }
     }

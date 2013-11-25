@@ -1,13 +1,6 @@
-var collegeService = function ($http) {
-    var College = function (data) {
-        angular.extend(this, data);
+var collegeService = function ($http, $resource) {
+    return function () {
+        return $resource('/college/:name', {name: '@name'});
     }
 
-    College.get = function (name) {
-        return $http.get('/college/' + name).then(function (response) {
-            return new College(response.data);
-        });
-    };
-
-    return College;
 };

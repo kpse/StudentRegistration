@@ -6,12 +6,11 @@ var AccommodationUtil = {
         return _.isUndefined(result) ? '' : result.imageUrl
     },
 
-    accCtrl: function ($scope, Accommodation) {
-        $scope.collegePromise.then(function (c) {
-            $scope.college = c
+    accCtrl: function ($scope, $stateParams, College, Accommodation) {
+        $scope.college = College().get({name: $stateParams.college}, function () {
 
             var refresh = function () {
-                var accommodationPromise = Accommodation.all(c.name);
+                var accommodationPromise = Accommodation.all($scope.college.name);
                 accommodationPromise.then(function (a) {
                     $scope.accommodations = a;
                 });
@@ -32,11 +31,11 @@ var AccommodationUtil = {
             });
         };
     },
-    buildingCtrl: function ($scope, $stateParams, Accommodation) {
-        $scope.collegePromise.then(function (c) {
-            $scope.college = c
+    buildingCtrl: function ($scope, College, $stateParams, Accommodation) {
+        $scope.college = College().get({name: $stateParams.college}, function () {
 
-            var accommodationPromise = Accommodation.all(c.name);
+
+            var accommodationPromise = Accommodation.all($scope.college.name);
             accommodationPromise.then(function (a) {
                 $scope.accommodations = a;
                 $scope.item = $stateParams.item;
@@ -44,16 +43,16 @@ var AccommodationUtil = {
             });
         });
     },
-    AddAccommodationCtrl: function ($scope, $stateParams, $rootScope, Accommodation) {
-        $scope.collegePromise.then(function (c) {
-            $scope.college = c
+    AddAccommodationCtrl: function ($scope, College, $stateParams, $rootScope, Accommodation) {
+        $scope.college = College().get({name: $stateParams.college}, function () {
+
 
             $scope.create = function () {
                 var promise = Accommodation.create({
                     name: $scope.name,
                     desc: $scope.name,
                     imageUrl: $scope.imageUrl
-                }, c.name);
+                }, $scope.college.name);
                 promise.then(function () {
                     $rootScope.$broadcast('refresh_accommodation');
                     $scope.name = '';
