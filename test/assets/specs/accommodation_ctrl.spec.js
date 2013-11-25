@@ -26,8 +26,7 @@ describe('app', function () {
                 deferred.resolve({name: 'some'})
                 _.extend(scope, {accommodations: [],
                     collegePromise: promise});
-                ctrl = $controller('AccommodationCtrl', {$scope: scope,
-                    resolvedprop: {url: 'context'}});
+                ctrl = $controller('AccommodationCtrl', {$scope: scope});
             })
         );
 

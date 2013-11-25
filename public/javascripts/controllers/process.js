@@ -14,10 +14,12 @@ var ProcessUtil = {
 
         $scope.enableModule = function () {
             $scope.movingItem.enable = true;
+            Module.bind({college: $scope.college.name}).enable({id: $scope.movingItem.id, enable: true});
         }
 
         $scope.disableModule = function () {
             $scope.movingItem.enable = false;
+            Module.bind({college: $scope.college.name}).enable({id: $scope.movingItem.id, enable: false});
         }
 
         $scope.startDrag = function (event, ui, item, index) {
@@ -28,12 +30,6 @@ var ProcessUtil = {
             if ($scope.movingItem === module) return;
             var url = module.url;
             $location.path('/college/' + $scope.college.name + '/studentPlatform/' + url);
-        }
-
-        $scope.update = function (modules) {
-            _.every(modules, function (m) {
-                return Module.bind({college: $scope.college.name}).enable({id: m.id, enable: m.enable});
-            });
         }
     }
 }
