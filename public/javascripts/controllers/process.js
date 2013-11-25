@@ -1,8 +1,7 @@
 var ProcessUtil = {
     processChangeCtrl: function ($scope, Module, College, $stateParams, $location, $resource) {
-        $scope.college = College().get({name: $stateParams.college}, function () {
-            $scope.modules = Module($scope.college.name).query(function () {
-            });
+        $scope.college = College.get({name: $stateParams.college}, function () {
+            $scope.modules = Module.bind({college: $scope.college.name}).query();
         });
 
         $scope.enabled = function (module) {
@@ -33,7 +32,7 @@ var ProcessUtil = {
 
         $scope.update = function (modules) {
             _.every(modules, function (m) {
-                return Module($scope.college.name).enable({id: m.id, enable: m.enable});
+                return Module.bind({college: $scope.college.name}).enable({id: m.id, enable: m.enable});
             });
         }
     }

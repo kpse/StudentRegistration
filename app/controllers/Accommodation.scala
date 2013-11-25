@@ -30,10 +30,12 @@ object AccommodationController extends Controller {
     )
   )
 
-  def create(college: String) =  Action { implicit request =>
-    accommodationForm.bindFromRequest.value map { acc =>
-      val created = Accommodations.create(acc, college)
-      Ok(Json.toJson(created)).as("application/json")
-    } getOrElse BadRequest
+  def create(college: String) = Action {
+    implicit request =>
+      accommodationForm.bindFromRequest.value map {
+        acc =>
+          val created = Accommodations.create(acc, college)
+          Ok(Json.toJson(created)).as("application/json")
+      } getOrElse BadRequest
   }
 }

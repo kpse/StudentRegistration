@@ -7,23 +7,18 @@ var AccommodationUtil = {
     },
 
     accCtrl: function ($scope, $stateParams, College, Accommodation) {
-        $scope.college = College().get({name: $stateParams.college}, function () {
+        $scope.college = College.get({name: $stateParams.college}, function () {
 
             var refresh = function () {
-                var accommodationPromise = Accommodation.all($scope.college.name);
-                accommodationPromise.then(function (a) {
-                    $scope.accommodations = a;
-                });
+                $scope.accommodations = Accommodation.bind({college: $scope.college.name}).query();
             }
-
             refresh();
-
             $scope.$on('refresh_accommodation', function () {
                 refresh();
             });
         });
         $scope.selectItem = function (selectedItem) {
-            _($scope.accommodations).each(function (item) {
+            _.each($scope.accommodations, function (item) {
                 item.selected = false;
                 if (selectedItem === item) {
                     selectedItem.selected = true;
@@ -31,33 +26,33 @@ var AccommodationUtil = {
             });
         };
     },
+
     buildingCtrl: function ($scope, College, $stateParams, Accommodation) {
-        $scope.college = College().get({name: $stateParams.college}, function () {
-
-
-            var accommodationPromise = Accommodation.all($scope.college.name);
-            accommodationPromise.then(function (a) {
-                $scope.accommodations = a;
+        $scope.college = College.get({name: $stateParams.college}, function () {
+            $scope.accommodations = Accommodation.bind({college: $scope.college.name}).query(function () {
                 $scope.item = $stateParams.item;
                 $scope.image = AccommodationUtil.imageOf($stateParams.item, $scope);
             });
         });
     },
-    AddAccommodationCtrl: function ($scope, College, $stateParams, $rootScope, Accommodation) {
-        $scope.college = College().get({name: $stateParams.college}, function () {
 
+    AddAccommodationCtrl: function ($scope, College, $stateParams, $rootScope, Accommodation, $resource) {
+        $scope.college = College.get({name: $stateParams.college}, function () {
 
             $scope.create = function () {
-                var promise = Accommodation.create({
-                    name: $scope.name,
-                    desc: $scope.name,
-                    imageUrl: $scope.imageUrl
-                }, $scope.college.name);
-                promise.then(function () {
+                var acc = new Accommodation();
+                acc.name = $scope.name;
+                acc.desc = $scope.name;
+                acc.imageUrl = $scope.imageUrl;
+                acc.college =  $scope.college.name;
+
+
+                acc.$save(function () {
                     $rootScope.$broadcast('refresh_accommodation');
                     $scope.name = '';
                     $scope.imageUrl = '';
                 });
+
             };
         });
 

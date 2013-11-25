@@ -1,11 +1,6 @@
-function collegeUrl(name) {
-    return '/college/' + name + '/module';
-}
-var moduleService = function ($http, $resource) {
-    return function (collegeName) {
-        return $resource(collegeUrl(collegeName) + '/:id',
-            {id: '@id'}, {
-                enable: {method: 'POST'}
-            });
-    };
+var moduleService = function ($resource) {
+    return $resource('/college/:college/module/:id',
+        {id: '@id', college: '@college'}, {
+            enable: {method: 'POST'}
+        });
 }

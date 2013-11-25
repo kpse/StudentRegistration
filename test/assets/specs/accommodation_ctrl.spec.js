@@ -20,7 +20,6 @@ describe('app', function () {
                         {id: 2, name: 'a2', desc: "a2", imageUrl: "url2", collegeId: 1 }
                     ]);
 
-
                 scope = $rootScope.$new();
                 var deferred = $q.defer();
                 var promise = deferred.promise;
