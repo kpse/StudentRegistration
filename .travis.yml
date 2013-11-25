@@ -1,4 +1,6 @@
 language: scala
+addons:
+  firefox: "17.0"
 env:
   - PLAY_VERSION=2.2.1
 before_script:
