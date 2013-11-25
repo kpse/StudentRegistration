@@ -18,7 +18,7 @@
         <script src="@routes.Assets.at("javascripts/vendor/underscore.js")" type="text/javascript"></script>
         <script src="@routes.Assets.at("javascripts/vendor/jquery-1.10.2.min.js")" type="text/javascript"></script>
         <script src="@routes.Assets.at("javascripts/vendor/jquery-ui.min.js")" type="text/javascript"></script>
-
+        <script src="@routes.Assets.at("javascripts/vendor/bootstrap.min.js")" type="text/javascript"></script>
         <script src="@routes.Assets.at("javascripts/vendor/angularjs/angular.js")" type="text/javascript"></script>
         <script src="@routes.Assets.at("javascripts/vendor/angularjs/angular-ui-router.js")" type="text/javascript"></script>
         <script src="@routes.Assets.at("javascripts/vendor/angularjs/angular-dragdrop.min.js")" type="text/javascript"></script>
@@ -31,6 +31,57 @@
         <script src="@routes.Assets.at("javascripts/college.js")" type="text/javascript"></script>
     </head>
     <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+              <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">智慧</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li>
+                  <a href="#equilibrium">快捷导航1</a>
+                </li>
+                <li>
+                  <a href="#">快捷2</a>
+                </li>
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    下拉1
+                    <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a href="#">Action</a>
+                    </li>
+                    <li>
+                      <a href="#">Another action</a>
+                    </li>
+                    <li>
+                      <a href="#">Something else here</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                      <a href="#">Separated link</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                      <a href="#">One more separated link</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <form class="navbar-form navbar-left ng-pristine ng-valid" role="search">
+                <div class="form-group">
+                  <input class="form-control" placeholder="快速查询" type="text">
+                </div>
+                <button class="btn btn-default" type="submit">提交</button>
+              </form>
+          </nav>
+
         @content
     </body>
 </html>
