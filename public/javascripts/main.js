@@ -1,4 +1,4 @@
-var app = angular.module("app", ['ui.router']);
+var app = angular.module("app", ['ui.router', 'ngResource']);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
@@ -43,4 +43,4 @@ app.controller({
 
 app.factory('Accommodation', accommodationService)
     .factory('College', collegeService)
-    .factory('Module', moduleService);
+    .factory('Modules', modulesService);

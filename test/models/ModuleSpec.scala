@@ -1,6 +1,5 @@
 package models
 
-import models.{Modules, Accommodations}
 import org.specs2.mutable.Specification
 import play.api.test.Helpers._
 import play.api.test.FakeApplication

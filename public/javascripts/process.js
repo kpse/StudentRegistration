@@ -1,11 +1,9 @@
 var ProcessUtil = {
-    processChangeCtrl: function ($scope, Module, $location) {
+    processChangeCtrl: function ($scope, Module, Modules, $location, $resource) {
         $scope.collegePromise.then(function (c) {
             $scope.college = c;
-            $scope.modulesPromise = Module.all($scope.college.name);
-            $scope.modulesPromise.then(function (m) {
-                $scope.modules = m;
-            })
+            $scope.modules = Modules($scope.college.name).query();
+            $scope.module = Module($scope.college.name);
         });
 
         $scope.enabled = function (module) {
@@ -28,8 +26,17 @@ var ProcessUtil = {
             $scope.movingItem = item;
         }
 
-        $scope.goModuleConfig = function(url) {
-            $location.path('/college/' + $scope.college.name +'/studentPlatform/' + url);
+        $scope.goModuleConfig = function (module) {
+            if($scope.movingItem === module) return;
+            var url = module.url;
+            $location.path('/college/' + $scope.college.name + '/studentPlatform/' + url);
+        }
+
+        $scope.update = function (modules) {
+            _.every(modules, function (m) {
+                var module = $scope.module(m);
+                return module.enable({id: m.id, enable: m.enable});
+            });
         }
     }
 }

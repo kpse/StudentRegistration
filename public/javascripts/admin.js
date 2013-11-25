@@ -1,4 +1,4 @@
-var admin = angular.module("admin", ['ui.router', 'ngDragDrop']);
+var admin = angular.module("admin", ['ui.router', 'ngDragDrop', 'ngResource']);
 
 admin.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
@@ -47,4 +47,5 @@ admin.controller({
 
 admin.factory('Accommodation', accommodationService)
     .factory('College', collegeService)
-    .factory('Module', moduleService);
+    .factory('Module', moduleService)
+    .factory('Modules', modulesService);

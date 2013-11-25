@@ -28,7 +28,7 @@ object ModuleController extends Controller {
       moduleForm.bindFromRequest.value map {
         module =>
           Modules.update(college)(module)
-          Ok("{status:success}").as("application/json")
+          Ok("{\"status\":\"success\"}").as("application/json")
       } getOrElse BadRequest
   }
 }

@@ -8,9 +8,9 @@
             <div class="thumbnail in-using-process" data-drop="true" ng-model='modules' data-jqyoui-options="modules"
                  jqyoui-droppable="{multiple:true,onDrop:'enableModule'}">
               <div class="caption">
-                <div class="btn btn-info btn-draggable" ng-repeat="item in modules | filter:enabled " ng-show="item.desc"
+                <div class="btn btn-info btn-draggable" ng-repeat="item in modules | filter:enabled | orderBy:displayIndex " ng-show="item.desc"
                      data-drag="true" data-jqyoui-options="{revert: 'invalid'}" ng-model="modules"
-                     jqyoui-draggable="{index: {{$index}},animate:true,onStart:'startDrag(item, $index)'}" ng-click="goModuleConfig(item.url)">{{item.desc}}
+                     jqyoui-draggable="{index: {{$index}},animate:true,onStart:'startDrag(item, $index)'}" ng-click="goModuleConfig(item)">{{item.desc}}
                 </div>
               </div>
             </div>
@@ -20,9 +20,9 @@
             <div class="thumbnail not-in-using-process" data-drop="true" ng-model='modules' data-jqyoui-options="modules"
                  jqyoui-droppable="{multiple:true,onDrop:'disableModule'}">
               <div class="caption">
-                <div class="btn btn-info btn-draggable" ng-repeat="item in modules | filter:disabled " ng-show="item.desc"
+                <div class="btn btn-info btn-draggable" ng-repeat="item in modules | filter:disabled | orderBy:displayIndex " ng-show="item.desc"
                      data-drag="true" data-jqyoui-options="{revert: 'invalid'}" ng-model="modules"
-                     jqyoui-draggable="{index: {{$index}},animate:true,onStart:'startDrag(item, $index)'}" ng-click="goModuleConfig(item.url)">{{item.desc}}
+                     jqyoui-draggable="{index: {{$index}},animate:true,onStart:'startDrag(item, $index)'}" ng-click="goModuleConfig(item)">{{item.desc}}
                 </div>
               </div>
             </div>
@@ -31,5 +31,5 @@
       </div>
     </div>
   </div>
-  <button class='btn btn-primary'>Save</button>
+  <button class='btn btn-primary' ng-model='modules' ng-click="update(modules)">Save</button>
 </div>
