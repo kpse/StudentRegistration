@@ -13,7 +13,7 @@ class IntegrationSpec extends Specification {
   "Application" should {
 
     "work from within a browser" in new WithBrowser {
-      running(TestServer(3333), HTMLUNIT) {
+      running(TestServer(3333), FIREFOX) {
         browser =>
 
           browser.goTo("http://localhost:3333/")
@@ -23,7 +23,7 @@ class IntegrationSpec extends Specification {
     }
 
     "have admin page" in {
-      running(TestServer(3333), HTMLUNIT) {
+      running(TestServer(3333), FIREFOX) {
         browser =>
 
           browser.goTo("http://localhost:3333/admin")
