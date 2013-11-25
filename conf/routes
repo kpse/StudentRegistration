@@ -18,6 +18,7 @@ POST        /college/:college/accommodation            controllers.Accommodation
 GET         /college/:name                             controllers.CollegeController.show(name: String)
 
 GET         /college/:college/module                   controllers.ModuleController.index(college: String)
+PUT         /college/:college/module/:id               controllers.ModuleController.update(college: String, id: Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                              controllers.Assets.at(path="/public", file)
