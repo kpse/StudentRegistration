@@ -6,17 +6,23 @@ var AccommodationUtil = {
         return _.isUndefined(result) ? '' : result.imageUrl
     },
 
-    accCtrl: function ($scope, $stateParams, College, Accommodation) {
+    accCtrl: function ($scope, $stateParams, College, Accommodation, Module, $location) {
         $scope.college = College.get({name: $stateParams.college}, function () {
+            $scope.modules = Module.bind({college: $scope.college.name}).query(function () {
+                var enabled = _.any($scope.modules, function (m) {
+                    return m.url == 'accommodation' && m.enable
+                });
+                if (!enabled) $location.path('/college/' + $scope.college.name);
+            });
 
-            var refresh = function () {
-                $scope.accommodations = Accommodation.bind({college: $scope.college.name}).query();
-            }
-            refresh();
+            $scope.refresh();
             $scope.$on('refresh_accommodation', function () {
-                refresh();
+                $scope.refresh();
             });
         });
+        $scope.refresh = function () {
+            $scope.accommodations = Accommodation.bind({college: $scope.college.name}).query();
+        }
         $scope.selectItem = function (selectedItem) {
             _.each($scope.accommodations, function (item) {
                 item.selected = false;
@@ -44,7 +50,7 @@ var AccommodationUtil = {
                 acc.name = $scope.name;
                 acc.desc = $scope.name;
                 acc.imageUrl = $scope.imageUrl;
-                acc.college =  $scope.college.name;
+                acc.college = $scope.college.name;
 
 
                 acc.$save(function () {
