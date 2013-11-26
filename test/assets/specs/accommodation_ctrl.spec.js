@@ -14,6 +14,10 @@ describe('app', function () {
                     respond(
                         {id: 1, name: 'some'}
                     );
+                $httpBackend.expectGET('/college/some/module').
+                    respond([
+                        {id: 1, name: 'mod1'}
+                    ]);
                 $httpBackend.expectGET('/college/some/accommodation').
                     respond([
                         {id: 1, name: 'a1', desc: "a1", imageUrl: "url1", collegeId: 1 },

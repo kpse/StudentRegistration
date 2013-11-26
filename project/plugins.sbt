@@ -7,6 +7,4 @@ resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/release
 // Use the Play sbt plugin for Play projects
 addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.2.1")
 
-resolvers += "Sonatype OSS Releases" at "https://oss.sonatype.org/content/repositories/releases"
-
-addSbtPlugin("net.litola" % "play-sass" % "0.3.0")
+addSbtPlugin("com.jmparsons" % "play-lessc" % "0.1.2")
