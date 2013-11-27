@@ -43,4 +43,5 @@ app.controller({
 
 app.factory('Accommodation', accommodationService)
     .factory('College', collegeService)
-    .factory('Module', moduleService);
+    .factory('Module', moduleService)
+    .factory('Dorm', dormService);

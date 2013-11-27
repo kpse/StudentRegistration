@@ -3,22 +3,25 @@
 # ~~~~
 
 # Home page
-GET         /                                          controllers.Application.index
-GET         /admin                                     controllers.Application.admin
+GET         /                                                         controllers.Application.index
+GET         /admin                                                    controllers.Application.admin
 
 #anglarjs template pages
-GET         /templates/*file                           controllers.Static.at(path="/public/templates", file)
-GET         /*college/templates/*file                  controllers.Static.ignoreCollege(path="/public/templates", file, college)
+GET         /templates/*file                                          controllers.Static.at(path="/public/templates", file)
+GET         /*college/templates/*file                                 controllers.Static.ignoreCollege(path="/public/templates", file, college)
 
 #Services
-GET         /college/:college/accommodation/:id        controllers.AccommodationController.show(college: String, id: Long)
-GET         /college/:college/accommodation            controllers.AccommodationController.index(college: String)
-POST        /college/:college/accommodation            controllers.AccommodationController.create(college: String)
+GET         /college/:college/accommodation/:id                       controllers.AccommodationController.show(college: String, id: Long)
+GET         /college/:college/accommodation                           controllers.AccommodationController.index(college: String)
+POST        /college/:college/accommodation                           controllers.AccommodationController.create(college: String)
 
-GET         /college/:name                             controllers.CollegeController.show(name: String)
+GET         /college/:name                                            controllers.CollegeController.show(name: String)
 
-GET         /college/:college/module                   controllers.ModuleController.index(college: String)
-POST         /college/:college/module/:id               controllers.ModuleController.update(college: String, id: Long)
+GET         /college/:college/module                                  controllers.ModuleController.index(college: String)
+POST        /college/:college/module/:id                              controllers.ModuleController.update(college: String, id: Long)
+
+GET         /college/:college/student/:studentId/accommodation        controllers.DormController.index(college: String, studentId: Long)
+POST        /college/:college/student/:studentId/accommodation        controllers.DormController.create(college: String, studentId: Long)
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file                              controllers.Assets.at(path="/public", file)
+GET         /assets/*file                                             controllers.Assets.at(path="/public", file)
