@@ -11,7 +11,6 @@ class ModuleSpec extends Specification {
     "get all records" in {
       running(FakeApplication(additionalConfiguration = inMemoryDatabase())) {
 
-
         Modules.all(college).size must beGreaterThan(0)
       }
     }

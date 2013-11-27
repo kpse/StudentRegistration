@@ -14,15 +14,9 @@ var AccommodationUtil = {
                 });
                 if (!enabled) $location.path('/college/' + $scope.college.name);
             });
-
-            $scope.refresh();
-            $scope.$on('refresh_accommodation', function () {
-                $scope.refresh();
-            });
-        });
-        $scope.refresh = function () {
             $scope.accommodations = Accommodation.bind({college: $scope.college.name}).query();
-        }
+        });
+
         $scope.selectItem = function (selectedItem) {
             _.each($scope.accommodations, function (item) {
                 item.selected = false;
@@ -54,7 +48,7 @@ var AccommodationUtil = {
 
 
                 acc.$save(function () {
-                    $rootScope.$broadcast('refresh_accommodation');
+                    $scope.accommodations.push(acc);
                     $scope.name = '';
                     $scope.imageUrl = '';
                 });
