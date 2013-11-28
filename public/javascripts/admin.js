@@ -39,7 +39,7 @@ admin.config(function ($stateProvider, $urlRouterProvider) {
 
 admin.controller({
     'AccommodationCtrl': AccommodationUtil.accCtrl,
-    'SingleBuildingCtrl': AccommodationUtil.buildingCtrl,
+    'SingleBuildingCtrl': AccommodationUtil.buildingImageCtrl,
     'AddAccommodationCtrl': AccommodationUtil.AddAccommodationCtrl,
     'CollegeCtrl': CollegeUtil.collegeCtrl,
     'ProcessChangeCtrl': ProcessUtil.processChangeCtrl

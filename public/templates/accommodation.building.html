@@ -1,8 +1,8 @@
 <div class="row">
   <img class="col-xs-9" ng-src="{{image}}" class="img-responsive"/>
 
-  <div class="col-xs-3 accommodation-thumbnail">
-    <button class="btn btn-primary" ng-click="chooseDorm()">就住这间</button>
+  <div class="col-xs-3 accommodation-thumbnail" ngShow="selectable">
+    <button class="btn btn-primary" ng-click="chooseDorm()">我选这间</button>
     <img src="{{myDorm.imageUrl}}" class="img-responsive"/>
   </div>
 </div>

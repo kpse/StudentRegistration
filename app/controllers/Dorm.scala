@@ -15,7 +15,7 @@ object DormController extends Controller {
     Ok(Json.toJson(jsons)).as("application/json")
   }
 
-  val dormForm = Form(
+  val dormCreateForm = Form(
     tuple(
       "dorm_id" -> longNumber,
       "student" -> longNumber,
@@ -25,11 +25,29 @@ object DormController extends Controller {
 
   def create(college: String, studentId: Long) = Action {
     implicit request =>
-      dormForm.bindFromRequest.value map {
+      dormCreateForm.bindFromRequest.value map {
         dorm =>
           val created = Dorms.create(dorm)
           Ok(Json.toJson(created)).as("application/json")
       } getOrElse BadRequest
   }
-  
+
+  val dormUpdateForm = Form(
+    tuple(
+      "dorm_id" -> longNumber,
+      "student" -> longNumber,
+      "college" -> text,
+      "dorm" -> longNumber
+    )
+  )
+
+  def update(college: String, studentId: Long, dorm: Long) = Action {
+    implicit request =>
+      dormUpdateForm.bindFromRequest.value map {
+        dorm =>
+          val updated = Dorms.update(dorm)
+          Ok(Json.toJson(updated)).as("application/json")
+      } getOrElse BadRequest
+  }
+
 }

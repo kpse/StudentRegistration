@@ -9,6 +9,20 @@ import play.api.Play.current
 case class Dorm(id: Long, studentId: Long, AccommodationId: Long)
 
 object Dorms {
+  def update(tuple: (Long, Long, String, Long)) = {
+    DB.withConnection {
+      implicit connection =>
+        SQL("update dorm set accommodationId={accommodation} where studentId={student} and id={id} ")
+          .on(
+          'student -> tuple._2,
+          'accommodation -> tuple._1,
+          'id -> tuple._4
+        ).executeUpdate()
+        findById(tuple._4)(0)
+    }
+  }
+
+
   val simple = {
     get[Long]("id") ~
       get[Long]("studentId") ~

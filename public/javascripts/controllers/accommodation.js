@@ -6,7 +6,7 @@ var AccommodationUtil = {
         return _.isUndefined(result) ? '' : result.imageUrl
     },
 
-    accCtrl: function ($scope, $stateParams, College, Accommodation, Module, $location, Dorm) {
+    accCtrl: function ($scope, $stateParams, College, Accommodation, Module, $location) {
         $scope.student = {id: 1}
         $scope.college = College.get({name: $stateParams.college}, function () {
             $scope.modules = Module.bind({college: $scope.college.name}).query(function () {
@@ -36,10 +36,16 @@ var AccommodationUtil = {
                 $scope.item = $stateParams.item;
                 $scope.image = AccommodationUtil.imageOf($stateParams.item, $scope);
                 $scope.myDorms = Dorm.bind({college: $scope.college.name, student: $scope.student.id}).query(function () {
-                    var dorm = _.first($scope.myDorms);
-                    $scope.myDorm = _.extend(dorm, {imageUrl: _.find($scope.accommodations,function (acc) {
+                    var dorm = _.first($scope.myDorms) || {AccommodationId: -1, imageUrl: ''};
+
+                    var chosen = _.find($scope.accommodations, function (acc) {
                         return acc.id == dorm.AccommodationId;
-                    }).imageUrl});
+                    });
+                    if (_.isUndefined(chosen)) {
+                        $scope.myDorm = dorm;
+                        return;
+                    }
+                    $scope.myDorm = _.extend(dorm, {imageUrl: chosen.imageUrl});
                 });
 
             });
@@ -53,6 +59,7 @@ var AccommodationUtil = {
             dorm.student = $scope.student.id;
             dorm.college = $scope.college.name;
 
+            dorm.dorm = $scope.myDorm.id;
 
             dorm.$save(function () {
 
@@ -62,6 +69,15 @@ var AccommodationUtil = {
             });
 
         };
+    },
+
+    buildingImageCtrl: function ($scope, College, $stateParams, Accommodation) {
+        $scope.college = College.get({name: $stateParams.college}, function () {
+            $scope.accommodations = Accommodation.bind({college: $scope.college.name}).query(function () {
+                $scope.item = $stateParams.item;
+                $scope.image = AccommodationUtil.imageOf($stateParams.item, $scope);
+            });
+        });
     },
 
     AddAccommodationCtrl: function ($scope, College, $stateParams, $rootScope, Accommodation) {
